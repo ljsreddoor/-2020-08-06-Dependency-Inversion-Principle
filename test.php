@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Http\Controllers\StoreMains;
+
 /**
  * Class dog
  *
@@ -11,14 +13,14 @@ class dog
 {
     /**
      * 吃東西
-     * @param \eat $eat
+     * @param \food $food
      *
      * @Author  : ljs
      * @DateTime: 2020/8/12 下午 10:39
      */
-    public function eat(eat $eat)
+    public function eat(food $food)
     {
-        $eat->eat();
+        $food->eat();
     }
 
     /**
@@ -65,7 +67,7 @@ class dog
  * @Author  : ljs
  * @DateTime: 2020/8/12 下午 10:40
  */
-interface eat
+interface food
 {
     public function eat();
 }
@@ -76,9 +78,10 @@ interface eat
  * @Author  : ljs
  * @DateTime: 2020/8/12 下午 10:40
  */
-class pork implements eat
+class pork implements food
 {
-    public function eat(){
+    public function eat()
+    {
         echo '吃豬肉';
     }
 }
@@ -89,9 +92,10 @@ class pork implements eat
  * @Author  : ljs
  * @DateTime: 2020/8/12 下午 10:40
  */
-class feed implements eat
+class feed implements food
 {
-    public function eat(){
+    public function eat()
+    {
         echo '吃飼料';
     }
 }
@@ -115,7 +119,8 @@ interface color
  */
 class black implements color
 {
-    public function color(){
+    public function color()
+    {
         echo '黑色';
     }
 }
@@ -139,7 +144,8 @@ interface run
  */
 class fast implements run
 {
-    public function run(){
+    public function run()
+    {
         echo '快跑';
     }
 }
@@ -163,7 +169,31 @@ interface foot
  */
 class short implements foot
 {
-    public function foot(){
+    public function foot()
+    {
         echo '短腿';
     }
 }
+
+//豬肉
+$pork = new pork();
+//飼料
+$feed = new feed();
+//顏色
+$black = new black();
+//速度
+$fast = new fast();
+//腳
+$short = new short();
+//狗
+$dog = new dog();
+
+$dog->eat($pork);
+echo (PHP_EOL);
+$dog->eat($feed);
+echo (PHP_EOL);
+$dog->color($black);
+echo (PHP_EOL);
+$dog->run($fast);
+echo (PHP_EOL);
+$dog->foot($short);
